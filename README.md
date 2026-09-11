@@ -1,5 +1,11 @@
-# networkwalks-B082-week1-Cybersecurity-lab-Setup
-Cybersecurity Lab Setup
+<h1 align="center">🔐 Cybersecurity Lab Environment Setup</h1>
+
+<p align="center">
+  Kali Linux • VirtualBox • Networking • Cybersecurity Labs
+</p>
+
+
+---
 
 📌 Project Overview
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -190,7 +196,10 @@ VirtualBox allows a separate operating system to run inside the main computer wi
 ### Outcome
 
 VirtualBox was successfully installed and ready for importing the Kali Linux virtual machine.
+
+
 <img width="997" height="788" alt="Screenshot 2026-09-11 203518" src="https://github.com/user-attachments/assets/8d31c9d6-4445-4ed3-bf2e-6c082dcf05b8" />
+
 
 ---
 
@@ -221,6 +230,11 @@ The dedicated NAT Network was successfully created and configured. It can also b
 <img width="997" height="788" alt="Screenshot 2026-09-11 203518" src="https://github.com/user-attachments/assets/3196e504-8ed0-43a7-916d-db0e6dc89f45" />
 
 
+
+
+<img width="952" height="720" alt="Screenshot 2026-09-11 204822" src="https://github.com/user-attachments/assets/c5ea1577-e985-414b-8580-998ed1ed3fed" />
+
+
 ---
 
 ## 4. Setting Up the Kali Linux Virtual Machine
@@ -246,10 +260,8 @@ The Kali Linux virtual machine was successfully imported, started, and connected
 
 **Images:**
 
-<img width="1896" height="1045" alt="Screenshot 2026-09-11 195119" src="https://github.com/user-attachments/assets/8b6840ef-e6f2-4484-a577-ee49c7cd8ce7" />
+<img width="952" height="741" alt="image" src="https://github.com/user-attachments/assets/72c828d6-05a0-47f5-a9d0-4aeeec223e71" />
 
-
-image
 
 ---
 
@@ -267,156 +279,190 @@ The Kali Linux network interface was then configured so that the virtual machine
 | Gateway | `10.0.0.1` |
 | DNS | `8.8.8.8` |
 
-### Commands Used
 
-```bash
-ifconfig
-sudo ifconfig eth0 down
-sudo ifconfig eth0 up
-ping google.com
+---
 
-🐞 Problems Encountered & Solutions
+## 🐞 Troubleshooting
 
-Documenting troubleshooting experiences demonstrates practical problem-solving skills and provides a reference for resolving similar issues in future laboratory setups.
+During the initial lab setup, I encountered a few issues related to network configuration and hardware virtualization. I documented the problems and the steps taken to resolve them.
 
-Problem 1 — Internet Connectivity After Static IP Configuration
+---
 
-🔴 Issue
+### 1. Internet Connectivity Issue After Static IP Configuration
 
-After manually configuring the IPv4 settings, the Kali Linux VM experienced Internet connectivity issues. This can occur when NetworkManager connection properties are not configured correctly for the selected network setup.
+#### 🔴 Problem
 
-🔧 Troubleshooting
+After manually configuring the IPv4 settings in Kali Linux, the VM was unable to connect to the Internet properly.
 
-The NetworkManager connection was modified using:
+The issue was related to the NetworkManager connection configuration.
 
-sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
+#### 🔧 Solution
 
-The network connection was then restarted, and connectivity was tested again.
+I modified the NetworkManager connection using:
 
-✅ Result
+`sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0`
 
-Internet connectivity was successfully restored after applying the configuration and restarting the network connection.
+After applying the change, I restarted the network connection and tested the connectivity again.
 
-💡 Important Note
+#### ✅ Outcome
 
-Network connection names can vary between systems. Before modifying a connection, identify the actual connection name with:
+Internet connectivity was successfully restored, and the Kali Linux VM was able to access external network resources normally.
 
-nmcli connection show
+#### 💡 Note
 
-Then replace "Wired connection 1" with the connection name shown on your system.
+Network connection names can vary between systems. To check the available connection names, use:
 
-Problem 2 — VirtualBox VT-x / Hardware Virtualization Error
+`nmcli connection show`
 
-🔴 Issue
+The connection name shown on the system should be used in place of `"Wired connection 1"`.
 
-The Kali Linux VM initially failed to start because hardware virtualization was disabled in the system's BIOS/UEFI firmware.
+---
 
-🔧 Solution
+### 2. VirtualBox VT-x / Hardware Virtualization Error
+
+#### 🔴 Problem
+
+The Kali Linux VM initially failed to start in VirtualBox because hardware virtualization was disabled in the computer's BIOS/UEFI settings.
+
+#### 🔧 Solution
 
 The issue was resolved by:
 
-Restarting the computer.
+1. Restarting the computer.
+2. Entering the BIOS/UEFI settings.
+3. Locating the hardware virtualization option.
+4. Enabling **Intel VT-x / Intel Virtualization Technology**.
+5. Saving the BIOS/UEFI changes.
+6. Restarting the computer.
+7. Launching the Kali Linux VM again through VirtualBox.
 
-Entering the BIOS/UEFI settings.
-
-Locating the hardware virtualization option.
-
-Enabling Intel VT-x / Intel Virtualization Technology.
-
-Saving the BIOS/UEFI configuration.
-
-Restarting the computer.
-
-Launching the Kali Linux VM again.
-
-✅ Result
+#### ✅ Outcome
 
 Hardware virtualization was enabled successfully, and the Kali Linux VM started normally in VirtualBox.
 
-💡 What I Learned
+#### 💡 Note
 
-Through this project, I gained practical experience in building and configuring a virtual cybersecurity laboratory using VirtualBox and Kali Linux.
+Hardware virtualization may appear under a slightly different name depending on the computer or BIOS/UEFI manufacturer. On Intel systems, it is commonly listed as **Intel Virtualization Technology** or **Intel VT-x**.
 
-The key concepts and skills I developed during Week 1 include:
+---
 
-1️⃣ NAT vs. NAT Network
 
-I learned the difference between NAT and NAT Network configurations in VirtualBox.
+## 📚 What I Learned
 
-A standard NAT configuration primarily provides Internet access to an individual virtual machine, while a NAT Network allows multiple virtual machines connected to the same virtual network to communicate with each other while also providing external network connectivity.
+Setting up this lab gave me practical experience with virtualization, networking, Kali Linux, and basic troubleshooting. I was able to understand these concepts by actually configuring and testing them rather than only studying them theoretically.
 
-This makes NAT Network particularly useful for creating a multi-machine cybersecurity laboratory.
+---
 
-2️⃣ Virtual Machine Networking
+### 1. NAT vs. NAT Network
 
-I learned how VirtualBox virtual network adapters connect virtual machines to different types of networks.
+I learned the difference between **NAT** and **NAT Network** in VirtualBox.
 
-I also gained an understanding of how network mode, IP addressing, gateways, and routing affect communication between virtual machines and external networks.
+A regular NAT setup mainly provides Internet access to a virtual machine, while a NAT Network allows multiple virtual machines connected to the same virtual network to communicate with each other while also providing Internet access.
 
-3️⃣ Static IP Configuration
+This makes NAT Network useful for building a multi-machine cybersecurity laboratory.
 
-I gained practical experience configuring and verifying IPv4 network settings in Kali Linux, including:
+---
 
-IPv4 address
+### 2. Virtual Machine Networking
 
-Subnet mask / CIDR
+I learned how VirtualBox's virtual network adapters connect virtual machines to different types of networks.
 
-Default gateway
+I also gained a basic understanding of how network settings such as:
 
-DNS server
+- IP address
+- Subnet / CIDR
+- Default gateway
+- DNS
+- Network mode
+- Routing
 
-Network connectivity
+affect communication between a virtual machine and other network resources.
 
-I also practiced using Linux networking commands to verify and troubleshoot the configuration.
+---
 
-4️⃣ Virtual Machine Snapshots
+### 3. Static IP Configuration
 
-I learned the importance of creating a clean VM snapshot before performing experimental or potentially disruptive activities.
+I gained hands-on experience configuring and checking IPv4 settings in Kali Linux.
 
-A snapshot provides a known-good recovery point, making it easier to restore the laboratory environment when required.
+I worked with:
 
-5️⃣ Troubleshooting & Problem Solving
+- IPv4 address
+- Subnet mask / CIDR
+- Default gateway
+- DNS server
+- Network connectivity
 
-During the setup, I encountered networking and virtualization-related issues.
+I also practiced using Linux networking commands to check the configuration and troubleshoot connectivity issues.
 
-By troubleshooting these problems, I gained practical experience with:
+---
 
-NetworkManager
+### 4. Virtual Machine Snapshots
 
-nmcli
-IPv4 configuration
-VirtualBox networking
-BIOS/UEFI virtualization settings
-Hardware virtualization
+I learned the importance of creating a snapshot after reaching a stable VM configuration.
 
-This helped me understand how to approach technical problems systematically rather than relying only on trial and error.
+A snapshot provides a **known-good restore point**, which makes it possible to return the virtual machine to an earlier state if a future experiment or configuration change causes problems.
 
-6️⃣ Technical Documentation
+This is especially useful when working with cybersecurity tools and experimental environments.
 
-I learned that documentation is an important part of professional cybersecurity work.
+---
 
-Recording the environment, configurations, commands, screenshots, problems, solutions, and verification results makes the project easier to understand, reproduce, troubleshoot, and maintain.
+### 5. Troubleshooting and Problem Solving
 
-🔐 Security & Ethics
-This laboratory is intended for educational and authorized cybersecurity practice only.
+The setup gave me practical experience dealing with networking and virtualization issues.
 
-Security testing should only be performed on systems, networks, applications, or devices that you own or have explicit permission to test.
+I worked with:
+
+- NetworkManager
+- `nmcli`
+- IPv4 configuration
+- VirtualBox networking
+- BIOS/UEFI settings
+- Hardware virtualization
+
+Instead of relying only on trial and error, I learned to identify the problem, check the relevant configuration, apply a possible solution, and then verify whether the issue was resolved.
+
+---
+
+### 6. Technical Documentation
+
+I also learned the importance of documenting technical work.
+
+Recording the environment, configurations, commands, screenshots, problems, solutions, and results makes a project easier to understand, reproduce, troubleshoot, and maintain.
+
+This documentation will also provide a useful reference for future cybersecurity laboratory exercises.
+
+---
+
+🔐 Security & Ethical Use
+---
+
+This laboratory is intended strictly for education purposes only.
+
+
+---
 
 👨‍🏫 Mentor
+---
 
 Waqas Karim (CCIE)
 
-Thank you for the technical guidance and practical learning opportunity throughout the internship.
+Thank you for the valuable technical guidance and hands-on learning experience throughout the internship.
+
+---
 
 👤 Author
+---
 
-Rabi Chaudhary
+Albina Shakil
 
-Cybersecurity Professional B082
+Cybersecurity Learner B083
 
-LinkedIn: https://lnkd.in/p/dS6wFAVN
+LinkedIn: https://www.linkedin.com/in/albina-s-3a08952a4/
+
+---
 
 📌 Project Information
+---
 
 Program Name: Cybersecurity at Networkwalks | Week: 01 | Project: Cybersecurity & Pentesting Lab Setup | Repository: GitHub
 
