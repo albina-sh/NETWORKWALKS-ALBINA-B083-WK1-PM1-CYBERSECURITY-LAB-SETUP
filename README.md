@@ -63,104 +63,74 @@ Future exercises may include:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Lab Architecture
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-<img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/0fad236f-78b8-42ff-a51b-a513ab28168f" />
+<img width="1896" height="1045" alt="Screenshot 2026-09-11 195119" src="https://github.com/user-attachments/assets/1f527461-251c-4c79-a329-9cfb114f4bcb" />
+
 
 Additional target machines can be added to the same virtual network in future projects.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🖥️ Lab Environment
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Component	Configuration
 
-Host Operating System	Windows 11
+### 🖥️ Lab Environment Specifications
 
-Processor	Intel Core i3 / i5
-
-RAM	16 GB
-
-Storage	512 GB SSD
-
-Virtualization Platform	Oracle VirtualBox
-
-Guest Operating System	Kali Linux 2026.2
-
-Network Type	NAT Network
-
-Network CIDR	10.0.0.0/24
-
-Kali Linux IP	10.0.0.2/24
-
-Gateway	10.0.0.1
-
-DNS Server	8.8.8.8
+| 🧩 Component | ⚙️ Configuration |
+| :--- | :--- |
+| **🖥️ Host OS** | Windows 11 |
+| **🧠 Host RAM** | 16 GB |
+| **⚡ Processor** | Intel Core i5 |
+| **🧰 Hypervisor** | VirtualBox 7.2 |
+| **🐉 Security OS** | Kali Linux 2026.2 |
+| **🧠 Kali RAM** | 2048 MB |
+| **🌐 Virtual Network** | NAT Network |
+| **📡 Network Address** | `10.0.0.0/24` |
+| **🐧 Kali IP Address** | `10.0.0.2/24` |
+| **🚪 Default Gateway** | `10.0.0.1` |
+| **🌍 DNS Server** | `8.8.8.8` |
+| **🔮 Future VM Range** | `10.0.0.3–10.0.0.99` |
 
 
-🌐 Network Configuration
-
-The Kali Linux virtual machine is connected to a dedicated NAT Network using the 10.0.0.0/24 private address range.
-
-The basic network configuration is:
-
-Network     : 10.0.0.0/24
-Gateway     : 10.0.0.1
-Kali VM     : 10.0.0.2/24
-DNS         : 8.8.8.8
-
-This configuration provides a controlled virtual networking environment while allowing the lab to be expanded with additional virtual machines in future exercises.
-
-:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🧰 Tools & Resources
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The following tools and resources were used to build the virtual cybersecurity laboratory:
 
-Tool / Resource	Purpose
+| 🛠️ Tool / Technology | 🎯 Primary Purpose |
+| :--- | :--- |
+| **7-Zip** | Extracting and managing compressed files |
+| **Oracle VirtualBox** | Creating and managing virtual machines |
+| **Kali Linux** | Cybersecurity learning and testing environment |
+| **NAT Network** | Providing isolated virtual network connectivity |
+| **Linux Networking Tools** | Configuring and troubleshooting network connectivity |
+| **VirtualBox Snapshots** | Creating recovery points for the VM |
 
-7-Zip	Extracting and managing compressed files
-Oracle VirtualBox	Creating and managing virtual machines
-Kali Linux	Cybersecurity learning and testing environment
-NAT Network	Providing isolated virtual network connectivity
-Linux Networking Tools	Configuring and troubleshooting network connectivity
-VirtualBox Snapshots	Creating recovery points for the VM
+
 
 🔗 Official Resources
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-7-Zip: 7-Zip Downloads
-Oracle VirtualBox: VirtualBox Downloads
-Kali Linux: Kali Linux Downloads
+- 7-Zip: [7-Zip Downloads](https://7-zip.org/download.html)
+ 
+- Oracle VirtualBox: [VirtualBox Downloads](https://7-zip.org/download.html)
+  
+- Kali Linux: [Kali Linux Downloads](https://7-zip.org/download.html)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-🛡️ Lab Setup Workflow
-
-The Week 1 laboratory setup was completed through six main stages:
-
-1️⃣ Install 7-Zip
-
-Install 7-Zip to extract and manage the Kali Linux files required for the virtual machine setup.
-
-2️⃣ Install Oracle VirtualBox
-
-Install Oracle VirtualBox as the virtualization platform used to create and manage the Kali Linux virtual machine.
-
-3️⃣ Configure the NAT Network
-
-Create and configure a private NAT Network using the 10.0.0.0/24 address range.
-
-4️⃣ Download & Import Kali Linux
-
-Download the Kali Linux virtual machine image and import it into VirtualBox.
-
-5️⃣ Configure Kali Linux Networking
-
-Configure and verify the Kali Linux network settings, including the IPv4 address, gateway, and DNS configuration.
-
-6️⃣ Create a VM Snapshot
-
-Create a clean snapshot after completing the initial configuration so the laboratory can be restored to a known working state when required.
 
 📌 Week 1 Setup Flow
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 7-Zip
    ↓
 VirtualBox Installation
@@ -175,128 +145,135 @@ Connectivity Verification
    ↓
 Clean VM Snapshot
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lab Setup Procedure
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 🛡️ Phase 01 — Lab Setup
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-1️⃣ 7-Zip Installation
-What I Did
+## 1. Installing 7-Zip
 
-Installed 7-Zip to extract and manage the compressed virtual machine files required for the cybersecurity laboratory.
+### Overview
 
-Why
+The first step was installing **7-Zip**, which was needed to extract the compressed files containing the virtual machine.
 
-Kali Linux virtual machine files are commonly distributed in compressed formats. 7-Zip was used to extract these files and prepare them for import into Oracle VirtualBox.
+### Steps Performed
 
-Result
+- Installed 7-Zip on the host system.
+- Used it to extract the downloaded Kali Linux virtual machine files.
+- Verified that the required VM files were available after extraction.
 
-✅ 7-Zip was successfully installed and verified.
+### Outcome
 
-✅ Required virtual machine files were extracted successfully.
+The Kali Linux VM files were successfully extracted and prepared for use with VirtualBox.
 
-✅ The Kali Linux VM files were prepared for the next stage of the laboratory setup.
+---
 
-<img width="1256" height="639" alt="image" src="https://github.com/user-attachments/assets/6881d55e-07f2-49b0-8e8b-2c0d85ff9977" />
+## 2. Installing Oracle VirtualBox
 
-<img width="889" height="407" alt="image" src="https://github.com/user-attachments/assets/7c907969-74e0-49a0-ad8b-46092992776c" />
+### Overview
 
-2️⃣ Oracle VirtualBox Installation
+Next, I installed **Oracle VirtualBox** to create and manage the virtual cybersecurity lab environment.
 
-What I Did
+VirtualBox allows a separate operating system to run inside the main computer without replacing the existing operating system. This makes it useful for creating an isolated environment for cybersecurity practice.
 
-Installed and configured Oracle VirtualBox as the virtualization platform for the cybersecurity laboratory.
+### Steps Performed
 
-Why
+- Installed Oracle VirtualBox.
+- Opened VirtualBox and verified that it was functioning correctly.
+- Prepared the virtualization environment for the Kali Linux VM.
 
-VirtualBox enables multiple operating systems to run on a single physical computer, providing an isolated environment for cybersecurity learning, testing, and experimentation.
+### Outcome
 
-Result
+VirtualBox was successfully installed and ready for importing the Kali Linux virtual machine.
+<img width="997" height="788" alt="Screenshot 2026-09-11 203518" src="https://github.com/user-attachments/assets/8d31c9d6-4445-4ed3-bf2e-6c082dcf05b8" />
 
-✅ Oracle VirtualBox was installed successfully.
+---
 
-✅ Virtualization support was verified and the platform was ready for VM creation.
+## 3. Configuring the NAT Network
 
-✅ The environment was prepared for importing the Kali Linux virtual machine.
+### Overview
 
-<img width="1287" height="649" alt="image" src="https://github.com/user-attachments/assets/8a887c29-3a74-4f2e-9ac7-c54f834b0c41" />
-<img width="1268" height="673" alt="image" src="https://github.com/user-attachments/assets/28862135-d52d-491e-878a-a101d11701f4" />
+A dedicated **NAT Network** was created in VirtualBox to provide networking for the cybersecurity laboratory.
 
-3️⃣ NAT Network Configuration
+The network uses a private IP range so that virtual machines can communicate within the lab while still being able to access the Internet through NAT.
 
-What I Did
+### Network Configuration
 
-Created and configured a dedicated NAT Network in Oracle VirtualBox for the cybersecurity laboratory.
+| Setting | Value |
+|---|---|
+| Network Type | NAT Network |
+| Network Name | NatNetwork |
+| Network CIDR | `10.0.0.0/24` |
+| DHCP | Enabled |
+| Gateway | `10.0.0.1` |
 
-The network was configured using a private 10.0.0.0/24 address range, allowing virtual machines in the lab to communicate within the controlled environment while maintaining Internet connectivity through NAT.
+### Outcome
 
-Why
+The dedicated NAT Network was successfully created and configured. It can also be used for connecting additional virtual machines to the lab in future exercises.
 
-A dedicated NAT Network provides a controlled and isolated virtual networking environment for the cybersecurity lab. It also allows additional virtual machines to be connected later for authorized security-testing exercises.
+**Image:**
 
-Network Configuration
-Network Type : NAT Network
-Network CIDR : 10.0.0.0/24
-DHCP         : Enabled
-Gateway      : 10.0.0.1
-<img width="1915" height="1000" alt="image" src="https://github.com/user-attachments/assets/f0eba435-149b-4b65-b7fc-19f6b13eb912" />
+<img width="997" height="788" alt="Screenshot 2026-09-11 203518" src="https://github.com/user-attachments/assets/3196e504-8ed0-43a7-916d-db0e6dc89f45" />
 
-4️⃣ Kali Linux VM Setup
 
-What I Did
+---
 
-Downloaded and imported the Kali Linux virtual machine into Oracle VirtualBox and connected the VM to the previously configured NatNetwork.
+## 4. Setting Up the Kali Linux Virtual Machine
 
-Why
+### Overview
 
-Kali Linux provides a comprehensive environment for cybersecurity education, network analysis, security-tool practice, and authorized security testing within a controlled laboratory environment.
+After configuring the network, I imported the **Kali Linux** virtual machine into Oracle VirtualBox and connected it to the previously created `NatNetwork`.
 
-🖥️ VM Configuration
+Kali Linux was selected as the primary operating system for the lab because it includes many tools commonly used for cybersecurity learning, network analysis, and authorized security testing.
 
-Operating System : Kali Linux
-Version          : 2026.2
-Virtualization   : Oracle VirtualBox
-Network          : NatNetwork
+### VM Configuration
 
-<img width="1918" height="1009" alt="image" src="https://github.com/user-attachments/assets/856858aa-8e0b-4f32-8580-cd69de5e9dd7" />
-<img width="643" height="403" alt="image" src="https://github.com/user-attachments/assets/cd82313e-de24-440c-b99b-53fddc09c814" />
+| Setting | Value |
+|---|---|
+| Operating System | Kali Linux |
+| Version | 2026.2 |
+| Virtualization Platform | Oracle VirtualBox |
+| Network | `NatNetwork` |
 
-5️⃣ Kali Linux Network Configuration
+### Outcome
 
-What I Did
+The Kali Linux virtual machine was successfully imported, started, and connected to the laboratory network.
 
-Configured the Kali Linux network interface with the required IP address, subnet, gateway, and DNS settings.
+**Images:**
 
-Why
+<img width="1896" height="1045" alt="Screenshot 2026-09-11 195119" src="https://github.com/user-attachments/assets/8b6840ef-e6f2-4484-a577-ee49c7cd8ce7" />
 
-Proper IP configuration is required for Kali Linux to communicate with the configured NAT Network and access network resources.
 
-IP Address : 10.0.0.2/24
-Gateway    : 10.0.0.1
-DNS        : 8.8.8.8
+image
 
-<img width="1315" height="805" alt="image" src="https://github.com/user-attachments/assets/7cc43d16-4492-4e11-b28a-8f3bfd905988" />
-Commands Used
+---
+
+## 5. Configuring Network Connectivity in Kali Linux
+
+### Overview
+
+The Kali Linux network interface was then configured so that the virtual machine could communicate with the NAT Network and access external network resources.
+
+### Network Configuration
+
+| Setting | Value |
+|---|---|
+| IP Address | `10.0.0.2/24` |
+| Gateway | `10.0.0.1` |
+| DNS | `8.8.8.8` |
+
+### Commands Used
+
+```bash
 ifconfig
 sudo ifconfig eth0 down
 sudo ifconfig eth0 up
 ping google.com
-<img width="1268" height="591" alt="image" src="https://github.com/user-attachments/assets/31d3f43a-84b4-427f-b460-7f40a43a027d" />
-<img width="1294" height="820" alt="image" src="https://github.com/user-attachments/assets/7422811f-ccc5-48e0-ba1e-5d28fc6f413d" />
-
-6️⃣ VirtualBox Snapshot
-
-What I Did
-
-Created a VirtualBox snapshot after completing the initial Kali Linux lab configuration.
-
-Why
-
-The snapshot provides a safe restore point before continuing with future cybersecurity labs and experiments.
-
-Snapshot Purpose : Lab Backup & Recovery
-<img width="1041" height="609" alt="image" src="https://github.com/user-attachments/assets/e40952b8-4830-4859-9685-9d3f78a3d709" />
-<img width="1078" height="501" alt="image" src="https://github.com/user-attachments/assets/7ef5cde2-e3d5-452a-aa02-7e75721de623" />
-<img width="1090" height="677" alt="image" src="https://github.com/user-attachments/assets/f203284a-8e41-4f76-a038-ab0c570fdc61" />
 
 🐞 Problems Encountered & Solutions
 
